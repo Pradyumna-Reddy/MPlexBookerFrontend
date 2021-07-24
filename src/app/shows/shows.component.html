@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-2 overlay">
+    <form [formGroup]="searchForm" class="mt-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="query" placeholder="Search for Movie..." formControlName="query" name="query">
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" id="date" formControlName="date" name="date">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="search(searchForm.value)">Search</button>
+    </form>
+  </div>
+  <div class="offset-1 col-6">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let movie of filteredMovies" class="col-12 mt-4">
+          <movie-thumbnail [movie]="movie"></movie-thumbnail>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

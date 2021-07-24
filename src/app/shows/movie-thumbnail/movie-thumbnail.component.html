@@ -1,0 +1,27 @@
+<div class="well">
+  <div class="row">
+    <div class="col-sm-3">
+      <img [src]=imagepath width="100px"/>
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-12"><h4>{{movie.name}}</h4></div>
+        <div class="col-12"><p>{{movie.description}}</p></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <div *ngIf="movie.rating" class="col-12">
+          <span *ngFor="let number of numbers" class="fa fa-star" [ngClass]="number <= movie.rating? 'checked': 'none'"></span>
+        </div>
+        <div *ngIf="!movie.rating" class="col-12">
+          Unrated
+        </div>
+        <div class="col-12">
+          <a class="btn btn-link btn-default" [routerLink]="['/shows/movie', movie.id]">Book</a>
+        </div>
+        <div class="col-12"></div>
+      </div>
+    </div>
+  </div>
+</div>

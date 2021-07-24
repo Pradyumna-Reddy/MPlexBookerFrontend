@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <img [src]=imagepath width="100px"/>
+    </div>
+    <div class="col-md-9">
+      <div class="col-12"><h4>{{movie.name}}</h4></div>
+      <div class="col-12"><p>{{movie.description}}</p></div>
+      <div class="col-md-12">
+        <form [formGroup]="bookingForm" class="form-row" (ngSubmit)="bookTickets(bookingForm.controls.showSelect.value, bookingForm.controls.noofTickets.value)">
+          <div class="form-group col-md-3">
+            <select (change)="SeatsAndTickets()" formControlName="showSelect"
+             class="form-control" id="showSelect" name="showSelect">
+              <option value="">Select Time</option>
+              <option *ngFor="let time of times" [value]="time[1]">{{time[0]}}</option>
+            </select>
+          </div>
+          <div class="offset-md-4 col-md-5">
+            <p *ngIf="bookingForm.controls.showSelect.value">{{remainingSeats || 0}} seats left</p>
+          </div>
+          <div class="form-group col-md-3">
+            <select *ngIf="bookingForm.controls.showSelect.value" (change)="onTicketsSelected()" formControlName="noofTickets"
+            class="form-control" id="noofTickets" name="noofTickets">
+             <option value="">Select Tickets</option>
+             <option *ngFor="let number of ticketsArray" [value]="number">{{number}}</option>
+           </select>
+          </div>
+          <div class="offset-md-4">
+            <button *ngIf="bookingForm.controls.noofTickets.value" type="submit" class="btn btn-primary" [disabled]="!bookingForm.valid">Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.overlay{
+  opacity:0.8;
+  background-color:#ccc;
+  height:100vh;
+  top:0px;
+  left:10px;
+  z-index:1000;
+}
